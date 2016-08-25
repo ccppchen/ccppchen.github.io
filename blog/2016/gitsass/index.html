@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>sass语法</title>
+    <meta name="description" content="文件后缀名">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://ccppchen.github.io/blog/2016/gitsass/">
+    <link rel="alternate" type="application/rss+xml" title="首页" href="http://ccppchen.github.io/feed.xml" />
+  </head>
+
+  <body>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72424445-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    <main>
+      <header class="site-header">
+  <div class="container">
+    <h1><a href="/"><span>首页</span></a></h1>
+
+    <button type="button" class="sliding-panel-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="navbar sliding-panel-content">
+      <ul>
+        
+          <li><a href="/blog" title="博客">博客</a></li>
+        
+          <li><a href="/archives" title="文章归档">文章归档</a></li>
+        
+          <li><a href="/about" title="关于我">关于我</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="sliding-panel-fade-screen"></div>
+
+
+      <div class="container">
+        <article role="article" class="post">
+
+  <div class="card">
+    <header class="post-header">
+      <h1 class="post-title">sass语法</h1>
+      <p class="post-meta">2016年 5月 9日</p>
+    </header>
+
+    <div class="post-content">
+      <h2 id="section">文件后缀名</h2>
+
+<p>sass有两种后缀名文件：一种后缀名为sass，不使用大括号和分号；另一种就是我们这里使用的scss文件，这种和我们平时写的css文件格式差不多，使用大括号和分号。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span><span class="err">文件后缀名为</span><span class="n">sass</span><span class="err">的语法</span>
+<span class="n">body</span>
+  <span class="ss">background</span><span class="p">:</span> <span class="c1">#eee</span>
+  <span class="n">font</span><span class="o">-</span><span class="ss">size</span><span class="p">:</span><span class="mi">12</span><span class="n">px</span>
+<span class="nb">p</span>
+  <span class="ss">background</span><span class="p">:</span> <span class="c1">#0982c1</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span><span class="err">文件后缀名为</span><span class="n">scss</span><span class="err">的语法</span><span class="p">,</span>
+<span class="n">body</span> <span class="p">{</span>
+  <span class="ss">background</span><span class="p">:</span> <span class="c1">#eee;</span>
+  <span class="n">font</span><span class="o">-</span><span class="ss">size</span><span class="p">:</span><span class="mi">12</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nb">p</span><span class="p">{</span>
+  <span class="ss">background</span><span class="p">:</span> <span class="c1">#0982c1;</span>
+<span class="p">}</span> </code></pre></figure>
+
+<blockquote>
+  <p>区别： scss后缀名文件跟css语法差别不大，sass后缀名文件则不使用大括号跟分号</p>
+</blockquote>
+
+<h2 id="section-1">导入</h2>
+
+<p>sass用 ` @import “文件名” `，规则和CSS的有所不同，编译时会将@import的scss文件合并进来只生成一个CSS文件 。</p>
+
+<p>所有的sass导入文件都可以忽略后缀名.scss。一般来说基础的文件命名方法以_开头，如_mixin.scss。这种文件在导入的时候可以不写下划线，可写成@import “mixin”。</p>
+
+<h5 id="ascss">_a.scss</h5>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">body</span> <span class="p">{</span>
+  <span class="ss">background</span><span class="p">:</span> <span class="c1">#eee;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h5 id="sassbscss">需要导入样式的sass文件b.scss：</h5>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@import</span> <span class="s2">&quot;a&quot;</span><span class="p">;</span>
+<span class="nb">p</span><span class="p">{</span>
+  <span class="ss">background</span><span class="p">:</span> <span class="c1">#0982c1;</span>
+<span class="p">}</span> </code></pre></figure>
+
+<h5 id="bcss">编译后的b.css</h5>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">body</span> <span class="p">{</span>
+  <span class="ss">background</span><span class="p">:</span> <span class="c1">#eee;</span>
+<span class="p">}</span>
+<span class="nb">p</span><span class="p">{</span>
+  <span class="ss">background</span><span class="p">:</span> <span class="c1">#0982c1;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="section-2">注释</h2>
+<p>sass有两种注释方式，一种是标准的css注释方式<code>/* */</code>，另一种则是<code>//</code>双斜杆形式的单行注释，不过这种单行注释不会被转译出来。</p>
+
+<h2 id="section-3">变量</h2>
+<p>sass的变量必须是<code>$</code>开头，后面紧跟变量名，而变量值和变量名之间就需要使用冒号<code>:</code>分隔开（就像CSS属性设置一样），如果值后面加上<code>!default</code>则表示默认值,<code>!global</code>则表示全局变量。</p>
+
+<p>**一般我们定义的变量都为属性值，可直接使用，但是如果变量作为属性或在某些特殊情况下等则必须要以#{$variables}形式使用。
+**</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vg">$borderDirection</span><span class="p">:</span> <span class="n">top</span> <span class="o">!</span><span class="n">default</span><span class="p">;</span>
+
+<span class="sr">/* scss */</span>
+<span class="o">.</span><span class="n">border</span><span class="o">-</span><span class="c1">#{$borderDirection}{</span>
+  <span class="n">border</span><span class="o">-</span><span class="c1">#{$borderDirection}:1px solid #ccc;</span>
+<span class="p">}</span>
+
+<span class="sr">/*输出 css*/</span>
+<span class="o">.</span><span class="n">border</span><span class="o">-</span><span class="n">top</span><span class="p">{</span>
+  <span class="n">border</span><span class="o">-</span><span class="ss">top</span><span class="p">:</span><span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="c1">#ccc;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="map">map数组</h2>
+<p>##### 定义</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vg">$heading</span><span class="p">:</span> <span class="p">(</span><span class="ss">h1</span><span class="p">:</span> <span class="mi">2</span><span class="n">em</span><span class="p">,</span> <span class="ss">h2</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span><span class="n">em</span><span class="p">,</span> <span class="ss">h3</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">2</span><span class="n">em</span><span class="p">);</span></code></pre></figure>
+
+<h5 id="section-4">使用</h5>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">/* scss */</span>
+<span class="vg">$headings</span><span class="p">:</span> <span class="p">(</span><span class="ss">h1</span><span class="p">:</span> <span class="mi">2</span><span class="n">em</span><span class="p">,</span> <span class="ss">h2</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span><span class="n">em</span><span class="p">,</span> <span class="ss">h3</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">2</span><span class="n">em</span><span class="p">);</span>
+<span class="vi">@each</span> <span class="vg">$header</span><span class="p">,</span> <span class="vg">$size</span> <span class="k">in</span> <span class="vg">$headings</span> <span class="p">{</span>
+  <span class="c1">#{$header} {</span>
+    <span class="n">font</span><span class="o">-</span><span class="ss">size</span><span class="p">:</span> <span class="vg">$size</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sr">/* 输出 css */</span>
+<span class="n">h1</span> <span class="p">{</span>
+  <span class="n">font</span><span class="o">-</span><span class="ss">size</span><span class="p">:</span> <span class="mi">2</span><span class="n">em</span><span class="p">;</span> 
+<span class="p">}</span>
+<span class="n">h2</span> <span class="p">{</span>
+  <span class="n">font</span><span class="o">-</span><span class="ss">size</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">5</span><span class="n">em</span><span class="p">;</span> 
+<span class="p">}</span>
+<span class="n">h3</span> <span class="p">{</span>
+  <span class="n">font</span><span class="o">-</span><span class="ss">size</span><span class="p">:</span> <span class="mi">1</span><span class="o">.</span><span class="mi">2</span><span class="n">em</span><span class="p">;</span> 
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="section-5">嵌套</h2>
+<p>sass的嵌套包括两种：一种是选择器的嵌套；另一种是属性的嵌套。我们一般说起或用到的都是选择器的嵌套，属性的嵌套用的比较少，
+&gt; 在选择器嵌套中，可以使用<code>&amp;</code>表示父元素选择器</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vi">@at</span><span class="o">-</span><span class="n">root</span></code></pre></figure>
+
+<p>sass3.3.0中新增的功能，用来跳出选择器嵌套的。默认所有的嵌套，继承所有上级选择器，但有了这个就可以跳出所有上级选择器。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">/* 不跳出嵌套 */</span>
+<span class="o">.</span><span class="n">partent</span><span class="p">{</span>
+    <span class="ss">color</span><span class="p">:</span> <span class="c1">#ff0000;</span>
+    <span class="o">.</span><span class="n">child</span><span class="p">{</span>
+        <span class="ss">width</span><span class="p">:</span><span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sr">//</span><span class="err">输出</span><span class="n">css</span>
+<span class="o">.</span><span class="n">parent</span> <span class="p">{</span>
+  <span class="ss">color</span><span class="p">:</span> <span class="c1">#ff0000;</span>
+<span class="p">}</span>
+<span class="o">.</span><span class="n">parent</span> <span class="o">.</span><span class="n">child</span> <span class="p">{</span>
+  <span class="ss">width</span><span class="p">:</span> <span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="o">---</span>
+
+<span class="sr">/* 跳出单个选择器 */</span>
+<span class="o">.</span><span class="n">partent</span><span class="p">{</span>
+    <span class="ss">color</span><span class="p">:</span> <span class="c1">#ff0000;</span>
+    <span class="vi">@at</span><span class="o">-</span><span class="n">root</span> <span class="o">.</span><span class="n">child</span><span class="p">{</span>
+        <span class="ss">width</span><span class="p">:</span><span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="sr">//</span><span class="err">输出</span><span class="n">css</span>
+<span class="o">.</span><span class="n">parent</span> <span class="p">{</span>
+  <span class="ss">color</span><span class="p">:</span> <span class="c1">#ff0000;</span>
+<span class="p">}</span>
+<span class="o">.</span><span class="n">child</span> <span class="p">{</span>
+  <span class="ss">width</span><span class="p">:</span> <span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">---</span>
+
+<span class="sr">/* 跳出多个选择器 */</span>
+<span class="o">.</span><span class="n">partent</span><span class="p">{</span>
+    <span class="ss">color</span><span class="p">:</span> <span class="c1">#ff0000;</span>
+    <span class="vi">@at</span><span class="o">-</span><span class="n">root</span> <span class="p">{</span>
+        <span class="o">.</span><span class="n">child</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+            <span class="ss">width</span><span class="p">:</span><span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="n">child</span><span class="o">-</span><span class="mi">2</span><span class="p">{</span>
+            <span class="ss">width</span><span class="p">:</span><span class="mi">50</span><span class="n">px</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="sr">//</span><span class="err">输出</span><span class="n">css</span>
+<span class="o">.</span><span class="n">parent</span> <span class="p">{</span>
+  <span class="ss">color</span><span class="p">:</span> <span class="c1">#ff0000;</span>
+<span class="p">}</span>
+<span class="o">.</span><span class="n">child</span><span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
+  <span class="ss">width</span><span class="p">:</span> <span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">.</span><span class="n">child</span><span class="o">-</span><span class="mi">2</span> <span class="p">{</span>
+  <span class="ss">width</span><span class="p">:</span> <span class="mi">50</span><span class="n">px</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="minxin">混合（minxin）</h2>
+<p>sass中使用<code>@mixin</code>声明混合，可以传递参数，参数名以<code>$</code>符号开始，多个参数以逗号分开，也可以给参数设置默认值。声明<code>@mixin</code>通过<code>@include</code>来调用。</p>
+
+
+    </div>
+
+    
+<hr>
+
+<aside id="comments" class="disqus">
+  <div class="container">
+    <h3><i class="icon icon-comments-o"></i> Comments</h3>
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function() {
+        this.page.url = 'http://ccppchen.github.io';
+        this.page.identifier = '/blog/2016/gitsass';
+      };
+      (function() {
+        var d = document,
+        s = d.createElement('script');
+        s.src = '//ccppchen.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</aside>
+
+  </div>
+
+</article>
+
+      </div>
+
+      <footer class="site-footer">
+  <div class="container">
+    <ul class="social">
+  <li><a href="http://github.com/ccppchen" target="_blank"><i class="icon icon-github"></i></a></li>
+  <li><a href="http://twitter.com/ccpp20142" target="_blank"><i class="icon icon-twitter"></i></a></li>
+  <li><a href="http://facebook.com/peng.chen.73700136" target="_blank"><i class="icon icon-facebook"></i></a></li>
+  <li><a href="http://linkedin.com/in/鹏-陈-77057410a" target="_blank"><i class="icon icon-linkedin"></i></a></li>
+</ul>
+    <p class="txt-medium-gray">
+      <small>&copy;2016 All rights reserved. Made with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and ♥</small>
+    </p>
+  </div>
+</footer>
+
+
+      <a href="https://github.com/ccppchen/ccppchen.github.io" target="_blank" class="github-corner"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#337ab7; color:#fff; position: absolute; top: 0; border: 0; right: 0;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+      <script type="text/javascript" src="/assets/jquery/dist/jquery.min.js"></script>
+      <script>
+      $(document).ready(function() {
+        $('.sliding-panel-button,.sliding-panel-fade-screen,.sliding-panel-close').on('click touchstart',function (e) {
+          $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
+          e.preventDefault();
+        });
+      });
+      </script>
+    </main>
+  </body>
+</html>
