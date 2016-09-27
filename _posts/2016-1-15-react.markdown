@@ -1,0 +1,264 @@
+---
+layout: post
+title:  "Reactjs"
+categories: React
+comments: true
+tag: React
+---
+
+* content
+{:toc}
+
+ReactJs
+
+
+
+
+
+# [React官网](https://facebook.github.io/react/)
+
+# [我的React练习](https://github.com/ccppchen/reactDemo)
+
+用的是yeoman上的react生成器，
+
+##安装方法：
+
+{% highlight ruby %}
+npm install -g generator-react
+{% endhighlight %}
+
+##使用方法：
+
+{% highlight ruby %}
+yo react
+{% endhighlight %}
+
+## React学习笔记 📒
+
+1、React.createClass  是创建一个组件
+
+{% highlight ruby %}
+React.renderComponent({component,el}) 渲染组件
+
+或者
+
+React.render({component,el}) 渲染组件
+{% endhighlight %}
+
+2、初始值
+	getInitialState 是设定初始的值， 访问里面的值用this.state.XX
+
+	修改并且重新渲染用this.setState({XX:”XX”});
+
+3、匹配对象里面的key 用：
+
+{% highlight ruby %}
+var Obj = {
+
+	“key”: “val1”,
+
+	“key2”: “val2"
+
+}
+
+Obj[key]  可以访问到val1
+{% endhighlight %}
+
+4、设置类class：
+
+	1是设置className属性，可以是字符串也可以是表达式，
+
+	2是设置style={style}属性 var style = {fontSize: 44}
+
+5、生命周期
+
+{% highlight ruby %}
+componentDidMount是初次渲染，只会渲染一次，
+
+componentWillMount是即将渲染
+
+componentWillReceiveProps(nextProps) - 组件实例即将设置新属性时被调用
+
+shouldComponentUpdate(nextProps, nextState) - 组件实例即将重新渲染时被调用
+
+componentWillUpdate(nextProps, nextState) - 组件实例即将重新渲染时被调用
+
+componentWillUnmount() - 组件实例即将从DOM树移除时被调用
+{% endhighlight %}
+
+6、获取DOM节点
+
+{% highlight ruby %}
+this.refs.textarea.getDOMNode()
+
+或者
+
+React.findDOMNode(this.refs.goodRef)
+{% endhighlight %}
+
+7、css3动画
+
+  * 为元素声明transition样式
+
+  * 设置属性初始值，第一次渲染元素
+
+  * 设置属性目标值，第二次渲染元素
+
+  需要注意的一点是window.getComputedStyle()方法的应用，调用 这个方法的目的是刷新DOM的样式，以便确保之前设置的样式已经被应用到DOM 上了。
+
+  {% highlight ruby %}
+// css3动画
+var css3 = React.createClass({
+	getDefaultProps: function() {
+		return {
+			value: 200
+		};
+	},
+	getInitialState: function() {
+		return {
+			value: 0,
+			mounted: false
+		};
+	},
+	componentDidMount: function() {
+		this.setState({
+			mounted: false
+		});
+	},
+	shouldComponentUpdate: function(nextProps, nextState) {
+		if(nextProps.value > 220 || nextProps.value < 0) return false;
+		return true;
+	},
+	handleClick: function (){
+		this.setState({
+			mounted: !this.state.mounted
+		});
+	},
+  render: function() {
+  	// 速度是0时的旋转角度
+  	var degree = -201;
+  	if (this.state.mounted) {
+  		degree = (this.props.value / 220) * 265 - 201;
+  		window.getComputedStyle(this.refs.image.getDOMNode()).transform;
+  	};
+
+  	//表针样式
+		var style={
+			transform : "rotate("+degree+"deg)"
+		};
+      return (
+          <div className="ez-gauge" onClick={this.handleClick}>
+          	<img src="images/gauge.jpg" alt=""/>
+          	<img src="images/gauge-pointer.jpg" ref="image" className="pointer" style={style} />
+          </div>
+      );
+  }
+});
+React.render(
+	<div>
+	<css3 value="200" />
+	</div>,
+	document.getElementById('app')
+);
+  {% endhighlight %}
+
+8、获取用户输入的值
+
+	{% highlight ruby %}
+// 获取DOM节点的值，refs
+var refNode = React.createClass({
+	getInitialState: function() {
+		return {
+			account: '',
+			password: '',
+			select: 'A',
+			radio: 'A',
+			checkbox: [],
+			textarea: 'this id textarea!!!'
+		};
+	},
+	handleSubmit: function (e){
+		e.preventDefault();
+		// console.log(e.native());
+		var formDate = {
+			account: this.refs['account'].getDOMNode().value,
+			password: this.refs['password'].getDOMNode().value,
+			select: this.refs['select'].getDOMNode().value,
+			radio: this.state.radio,
+			checkbox: this.state.checkbox,
+			textarea: this.refs['textarea'].getDOMNode().value
+		};
+
+		console.log(formDate);
+	},
+	goodRadio: function (e){
+		this.setState({
+			radio: e.target.value
+		});
+	},
+	goodCheck: function (e){
+		var checkValue = this.state.checkbox.slice();
+		var newVal = e.target.value;
+		var index = checkValue.indexOf(newVal);
+		if (index == -1) {
+			checkValue.push( newVal );
+		}else{
+			checkValue.splice(index, 1)
+		}
+		this.setState({
+			checkbox: checkValue
+		});
+	},
+    render: function() {
+        return (
+        	<form onSubmit={this.handleSubmit} className = "ez-login">
+				<div className="row title">
+					<h1>登录</h1>
+				</div>
+				<div className="row account">
+					<label>用户</label>
+					<input type="text" defaultValue="" placeholder="请输入用户名" ref="account"/>
+				</div>
+				<div className="row pass">
+					<label>密码</label>
+					<input type="password" ref="password" placeholder="请输入密码" ref="password"/>
+				</div>
+				<div classNmae="row">
+					<select defaultValue="A" ref="select">
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
+					</select>
+				</div>
+				<div className="row">
+					A
+					<input onChange={this.goodRadio} type="radio" value="A" name="goodRadio" defaultChecked/>
+					B
+					<input onChange={this.goodRadio} type="radio" value="B" name="goodRadio"/>
+					C
+					<input onChange={this.goodRadio} type="radio" value="C" name="goodRadio"/>
+				</div>
+				<div className="remember">
+					<input onChange={this.goodCheck} type="checkbox" name="goodCheckbox" value="0"/>
+					玩游戏
+					<input onChange={this.goodCheck} type="checkbox" name="goodCheckbox" value="1"/>
+					泡妞
+					<input onChange={this.goodCheck} type="checkbox" name="goodCheckbox" value="2"/>
+					上网
+				</div>
+				<div className="row"></div>
+					<textarea name="" defaultValue={this.state.textarea} ref="textarea"></textarea>
+				<div className="row button">
+					<button type="submit">登录</button>
+				</div>
+			</form>
+        );
+    }
+});
+React.render(
+	<div>
+		<refNode />
+	</div>,
+	document.getElementById('app')
+);
+	{% endhighlight %}

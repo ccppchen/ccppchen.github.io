@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "南昌地铁一号线开通"
+categories: 生活
+tags: Life
+comments: true
+tag: life
+---
+
+* content
+{:toc}
+
+南昌地铁经过八年终于开始运营了.
+
+
+
+
+
+
+![]({{site.baseurl}}/images/IMG_3407.JPG)
+![]({{site.baseurl}}/images/IMG_3408.JPG)

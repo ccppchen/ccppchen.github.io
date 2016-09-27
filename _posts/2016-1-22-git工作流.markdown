@@ -1,0 +1,57 @@
+---
+layout: post
+title:  "git工作流"
+categories: git
+comments: true
+tag: git
+---
+
+* content
+{:toc}
+
+git工作流
+
+
+
+
+
+
+### 查看本地和远程所有分支
+
+{% highlight ruby %}
+git branch -a
+{% endhighlight %}
+
+### 创建和删除本地分支
+
+{% highlight ruby %}
+git branch branchName    git branch -b branchName 加-b参数创建并切换到改分支
+
+git branch -D branchName
+{% endhighlight %}
+
+### 切换本地分支
+
+{% highlight ruby %}
+git checkout branchName
+{% endhighlight %}
+
+### 合并其他分支到主分支上
+
+{% highlight ruby %}
+git checkout master 回到主分支上
+
+git merge dev
+{% endhighlight %}
+
+### git 删除远程分支
+
+{% highlight ruby %}
+git push origin :dev
+{% endhighlight %}
+
+### 在远程创建分支
+
+{% highlight ruby %}
+git push origin master:dev
+{% endhighlight %}
