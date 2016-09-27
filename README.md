@@ -171,7 +171,7 @@ gem install jekyll
 
 ```yml
 # Site settings
-title: AntChen
+title: HyG
 brief-intro: Front-end Dev Engineer
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://ccppchen.github.io" # the base hostname & protocol for your site
@@ -183,13 +183,13 @@ url: "http://ccppchen.github.io" # the base hostname & protocol for your site
 
 ```yml
 # other links
-twitter_username: ccpp20142
-facebook_username: peng.chen.73700136
+twitter_username: ccppchen126
+facebook_username: ccppchen.water
 github_username:  ccppchen
-email: chainachenpeng@gmail.com
-weibo_username: ccppchen
+email: ccppchen126@126.com
+weibo_username: 3115521wh
 zhihu_username: ccppchen
-linkedIn_username: 鹏-陈-77057410a
+linkedIn_username: ccppchen
 dribbble_username:
 
 description_footer: 本站记录我前端之旅的沿途风景！
@@ -205,7 +205,7 @@ description_footer: 本站记录我前端之旅的沿途风景！
 # comments
 # two ways to comment, only choose one, and use your own short name
 # 两种评论插件，选一个就好了，使用自己的 short_name
-duoshuo_shortname: #ccppchen
+duoshuo_shortname: #hygblog
 disqus_shortname: ccppchen
 ```
 
@@ -222,8 +222,8 @@ disqus_shortname: ccppchen
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
 # hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
 # xxxxx字符串
-baidu_tongji_id: ce199eb2cb695b9be3b8a76b1f72a012
-google_analytics_id: UA-72424445-1 # google 分析追踪id
+baidu_tongji_id: cf8506e0ef223e57ff6239944e5d46a4
+google_analytics_id: UA-72449510-4 # google 分析追踪id
 ```
 
 成功后，进入自己的百度统计或 Google Analytics 后台管理，即可看到网站的访问量、访客等相关信息。
@@ -239,7 +239,7 @@ title:  "对这个 jekyll 博客主题的改版和重构"
 date:   2016-03-12 11:40:18 +0800
 categories: jekyll
 tags: jekyll 端口 markdown Foxit RubyGems HTML CSS
-author: author
+author: Haoyang Gao
 ---
 ```
 
@@ -312,12 +312,63 @@ Configuration file: E:/GitWorkSpace/blog/_config.yml
 
 支付宝 | 微信支付 | PayPal
  :---: | :---: | :---:
-![alipay](http://ccppchen.github.io/images/alipay.jpg) | ![wechat](http://ccppchen.github.io/images/weixin.jpg)
+![alipay](http://ww2.sinaimg.cn/large/7011d6cfjw1f3bk8ikzoij20740743z5.jpg) | ![wechat](http://ww2.sinaimg.cn/large/7011d6cfjw1f3bkdw3bslj206z06q3z6.jpg) | [![PayPal](https://www.paypalobjects.com/webstatic/paypalme/images/pp_logo_small.png)<br>Donate via PayPal ](https://www.paypal.me/ccppchen)
 
 
 
 
 感谢捐助的小伙伴！！！
+
+* 2016.08.25 收到 Erlend Aakre $2.50
+* 2016.08.10 收到 ¥4.40
+* 2016.07.25 收到 邓炳初 ¥6.66
+* 2016.07.11 收到 彦风 ¥6.66
+* 2016.07.07 收到 Klci ¥2.50
+* 2016.05.08 收到 1057 ¥10.57
+* 2016.05.07 收到 吴林 ¥2
+* 2016.04.29 收到 北归 ¥10
+* 2016.04.28 收到 魏楚阳_Brian ¥2
+* 2016.04.28 收到 薛彬 ¥8.8
+
+
+## Update Log
+
+### 2016.6.20
+
+* `[+]` 在文章页中添加上一篇和下一篇文章链接。
+* `[^]` 修改 font-family 顺序，避免微软雅黑将单引号解析为全角。
+* `[^]` 修复标签云算法中被除数为零的 bug。[#26](https://github.com/ccppchen/ccppchen.github.io/issues/26), [#28](https://github.com/ccppchen/ccppchen.github.io/issues/28), [#30](https://github.com/ccppchen/ccppchen.github.io/issues/30)
+
+### 2016.5.11 v2.0.1
+
+* `[^]` 优化代码，将页面中的大段评论相关代码抽离出来，放入`comments.html`
+* `[+]` 添加百度统计和Google分析代码，在`_config.yml`中配置相关参数即可
+* `[+]` 更新文档，添加博客主题使用方法，便于上手
+* `[+]` 添加了`favicon.ico`
+* `[^]` 修复 bug，目录太长时，滚动到最底部时隐藏到footer下面。修复后长目录在滚动到底部时使用`position:absolute`
+* `[^]` 修改目录区的滚动条样式（仅针对`webkit`内核浏览器）
+* `[^]` 修改 demo 页中 disqus 评论区 a 标签的颜色 bug，修改 blockqoute 中 p 标签的 margin
+* `[+]` 添加不蒜子计数功能，在footer上显示访问量
+* `[+]` 添加回到顶部功能
+
+### 2016.4.27 v2.0.0
+
+* `[^]` 基于 jekyll 3.1.2 重构了所有代码
+* `[+]` 主页添加了摘要，在正文中使用4个换行符来分割，可在`_config.yml`中修改
+* `[+]` 主页添加了近期文章、分类列表和标签云
+* `[+]` 主页导航区做了视觉优化，阴影效果
+* `[+]` 增加了归档、标签和分类页面
+* `[+]` 增加了收藏页面
+* `[+]` 评论插件可以选择 disqus 或 多说，直接在`_config.yml`中修改
+* `[+]` 适配移动端
+* `[+]` 页面滚动时，文章目录固定在右侧
+* `[+]` 页面内容较少时，固定 footer 在页面底部
+* `[^]` 使用 GitHub 风格的代码高亮写法，即\`\`\`的写法，去除`highlight.js`代码高亮插件的使用
+* `[^]` 使用 Masonry 重写了 Demo 页中的瀑布流布局，响应式交互体验更好
+* `[-]` 去除了 jQuery 和 BootStrap，使得加载速度更快
+
+关于旧版博客，我不再维护，同时我把代码转移到了另一个仓库，见 [ccppchen/old-blog](https://github.com/ccppchen/old-blog)。
+
 ## License
 
 [MIT License](https://github.com/ccppchen/ccppchen.github.io/blob/master/LICENSE.md)
