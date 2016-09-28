@@ -18,7 +18,7 @@ icon: heart
 
 ## 联系我
 
-* GitHub：[Gaohaoyang](https://github.com/ccppchen)
+* GitHub：[ccppchen](https://github.com/ccppchen)
 * email：1183491359@qq.com
 * [Weibo](http://weibo.com/ccppchen)
 * [知乎](https://www.zhihu.com/people/ccppchen)
