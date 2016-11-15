@@ -52,3 +52,26 @@ React-Native总结
 </ol>
 </li>
 </ol>
+
+React-Native 打包，分两种，在线打包，离线打包；
+
+在线打包，原声app指向npm服务器端的js文件，可以在线访问，把js文件部署在服务端，这样的有点可以随时改变服务端文件，便于发布；但是依赖网络，没有网络立即报错。
+离线打包：离线访问，没有网络的时候程序不会报错；缺点，每次有更新必须从新发布app
+
+下面给大家分享一下离线打包app的方法，ios版本。
+```
+react-native bundle --entry-file index.ios.js --platform ios --bundle-output ios/main.bundle  
+
+```
+截图如下：
+
+![image](http://img.blog.csdn.net/20160606174624769?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+然后需要在代码中配置一下，将bundle文件拷贝到ios项目目录下，指向生成的main.bundle文件
+
+代码如下：
+
+![image](http://img.blog.csdn.net/20160606174632172?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
+成功了。
+
